@@ -1,21 +1,60 @@
 using System;
 using System.Collections.Generic;
-using Xunit;
 
-namespace Statistics.Tests
+
+
+namespace Statistics
 {
-    public class AverageTest
+    public class Average
     {
-        [Fact]
-        public void TestMeanOfTwoNumbers()
+        public double Mean(List<int> numbers)
         {
-            List<int> numbers = new List<int> { 1, 3 };
-            double expected = 2;
-            Average average = new Average();
+            if(numbers.Count == 0)
+            {
+                throw new ArgumentException();
+            }
+            int sum = 0;
+            double mean = 0.0;
 
-            double actual = average.Mean(numbers);
 
-            Assert.Equal(expected, actual);
+
+           foreach (int number in numbers)
+            {
+                sum += number;
+            }
+
+
+
+           mean = (double)sum / numbers.Count;
+            return mean;
         }
+
+
+
+       public double Median(List<int> numbers)
+        {
+
+
+
+           numbers.Sort();
+            //gerade
+            if (numbers.Count % 2 == 0)
+            {
+                return (double)(numbers[(int)numbers.Count / 2] + numbers[((int)numbers.Count / 2)-1])/2;
+            }
+            //ungerade
+            else
+            {
+                return numbers[(int)Math.Floor((double)numbers.Count / 2)];
+            }
+            
+
+
+
+       }
+
+
+
+
     }
 }
