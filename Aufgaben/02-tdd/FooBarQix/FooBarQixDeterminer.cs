@@ -6,15 +6,23 @@ namespace FooBarQix
     {
         public string Determine(int number)
         {
+            string res = string.Empty;
             if (number % 3 == 0)
             {
-                return "Foo";
+                 res += "Foo";
             }
             if (number % 5 == 0)
             {
-                return "Bar";
+                 res += "Bar";
             }
-            return number.ToString();
+            if (number % 7 == 0)
+            {
+                res += "Qix";
+            }
+            if(res == string.Empty){
+                return number.ToString();
+            }
+            return res.ToString();
         }
 
     }
